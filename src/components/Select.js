@@ -10,12 +10,14 @@ class Select extends Component {
       onChange,
       id,
       name,
+      ind,
     } = this.props;
     return (
       <select
         value={selected}
         name={name}
         id={id}
+        data-ind={ind}
         onChange={onChange}
       >
         {options.map(option => (
@@ -38,7 +40,8 @@ Select.propTypes = {
   onChange: PropTypes.func.isRequired,
   selected: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  ind: PropTypes.number.isRequired,
 };
 
 Select.defaultProps = {

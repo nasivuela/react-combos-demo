@@ -7,7 +7,7 @@ class App extends Component {
 
     this.state = {
       selectedIngredients: [],
-      availableIngredients: []
+      availableIngredients: [],
     };
 
     this.addAvailableIngredients = this.addAvailableIngredients.bind(this);
@@ -31,13 +31,13 @@ class App extends Component {
 
     this.setState({
       selectedIngredients: [ingredients[0]],
-      availableIngredients: [...ingredients]
+      availableIngredients: [...ingredients],
     });
   }
 
-  handleCombosChange(selection) {
+  handleCombosChange(newSelection) {
     this.setState({
-      selectedIngredients: selection
+      selectedIngredients: newSelection,
     });
   }
 
