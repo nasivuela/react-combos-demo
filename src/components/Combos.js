@@ -9,13 +9,13 @@ class Combos extends Component {
   constructor(props) {
     super(props);
 
-    this.addItem = this.addItem.bind(this);
-    this.removeItem = this.removeItem.bind(this);
-    this.updateItem = this.updateItem.bind(this);
-    this.updateItemV2 = this.updateItemV2.bind(this);
+    this.handleAddItem = this.handleAddItem.bind(this);
+    this.handleRemoveItem = this.handleRemoveItem.bind(this);
+    this.handleUpdateItem = this.handleUpdateItem.bind(this);
+    this.handleUpdateItemV2 = this.handleUpdateItemV2.bind(this);
   }
 
-  addItem(e) {
+  handleAddItem(e) {
     const { selection, options, onCombosChange } = this.props;
     onCombosChange([
       ...selection,
@@ -23,7 +23,7 @@ class Combos extends Component {
     ]);
   }
 
-  removeItem(e) {
+  handleRemoveItem(e) {
     const { selection, onCombosChange } = this.props;
     const itemToRemove = e.currentTarget.value;
     const newSelection = selection.filter(item => item !== itemToRemove);
@@ -31,7 +31,7 @@ class Combos extends Component {
     onCombosChange(newSelection);
   }
 
-  updateItem(indToUpdate) {
+  handleUpdateItem(indToUpdate) {
     return (event) => {
       const { value } = event.target;
       const { selection, onCombosChange } = this.props;
@@ -42,7 +42,7 @@ class Combos extends Component {
     };
   }
 
-  updateItemV2(event) {
+  handleUpdateItemV2(event) {
     const { dataset, value } = event.target;
     const indToUpdate = dataset.ind;
     const { selection, onCombosChange } = this.props;
@@ -67,11 +67,11 @@ class Combos extends Component {
                 ind={ind}
                 id={`${name}-ind`}
                 name={`${name}-ind`}
-                onChange={this.updateItemV2}
+                onChange={this.handleUpdateItemV2}
                 optionsDisabled={arr}
               />
               <button
-                onClick={isAddButton === true ? this.addItem : this.removeItem}
+                onClick={isAddButton === true ? this.handleAddItem : this.handleRemoveItem}
                 value={item}
               >
                 {isAddButton ? "+" : "-"}
