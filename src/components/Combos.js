@@ -46,10 +46,10 @@ class Combos extends Component {
     const { name, max, selection, options } = this.props;
     return (
       <div>
-        {selection.map((item, ind, listArr) => {
+        {selection.map((item, ind, arr) => {
           const isAddButton =
-            onlyOneItemInArr(listArr) ||
-            (isLastItemInArr(ind, listArr) && !hasMaxLen(listArr, max));
+            onlyOneItemInArr(arr) ||
+            (isLastItemInArr(ind, arr) && !hasMaxLen(arr, max));
 
           return (
             <div key={ind}>
@@ -59,7 +59,7 @@ class Combos extends Component {
                 id={`${name}-ind`}
                 name={`${name}-ind`}
                 onChange={this.updateItem(ind)}
-                disabled={listArr}
+                optionsDisabled={arr}
               />
               <button
                 onClick={isAddButton ? this.addItem : this.removeItem}
